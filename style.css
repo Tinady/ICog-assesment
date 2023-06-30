@@ -1,0 +1,237 @@
+body{
+    margin-top:45px;
+
+}
+
+.header-main{
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    height: 60px;
+    box-shadow: 2px 2px rgba(117, 110, 110, 0.2);
+    background-color: white;
+    font-size: 20px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+     align-items: center;
+     padding: 0px 20px;
+     
+ 
+}
+
+.header p:hover{
+ background-color: rgb(137, 138, 138);
+ 
+
+}
+
+.header p{
+    padding: 10px;
+}
+
+.header-options{
+    display: flex;
+    gap: 20px;
+
+}
+
+.hamburger-img{
+ 
+ width: 1650px;
+ min-width: 300px;
+ height:600px;
+
+
+}
+
+.hamburger-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+
+.hamburger-text{
+    
+    margin-top: -70px;
+    margin-left: -500px;
+    font-size: 40px;
+    color: rgb(118, 125, 125);
+    letter-spacing: 5px;
+    font-weight: lighter;
+    
+ }
+
+.abt-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+   padding: 10px;
+   border-bottom-style:solid;
+   height:700px;
+   border-width: 1px;;
+
+
+}
+
+.abt-img{
+    height: 500px;
+    width: 380px;
+}
+
+.abt-detail{
+    
+    padding: 10px 0px ;
+    width: 400px;
+}
+
+.abt-title{
+    font-weight: 400;
+    letter-spacing: 5px;
+   font-size: 30px;
+   margin-bottom: 40px;
+   margin-left:20px;
+    
+}
+
+.tradition{
+    margin-left: 50px;
+    letter-spacing:4px ;
+   
+}
+
+.p1{
+   line-height: 20px; 
+   margin-bottom: 10px;
+
+}
+
+span{
+     background-color: rgb(224, 226, 227);
+
+}
+
+
+.p2{
+    line-height: 20px; 
+    margin-bottom: 10px;
+    color: rgb(134, 136, 137);
+ 
+ }
+
+
+
+.menu-container{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+    padding:  15px;
+   border-bottom-style:solid;
+   height:700px;
+   border-bottom-color:rgb(118, 125, 125);
+   border-width: 1px;
+   
+}
+
+.menu-img{
+    height: 600px;
+    width: 380px;
+}
+
+
+.menu-title{
+     margin-left:100px;
+     letter-spacing: 4px;
+     font-size: 30px;
+     font-weight: 400;
+    
+}
+
+.foods{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
+}
+
+.food-name{
+     letter-spacing: 5px;
+     font-weight: 300;
+     font-size: 15px;
+}
+
+.food-detail{
+    font-weight: lighter;
+    color: rgb(141, 141, 141);
+    font-size: 12px;
+}
+
+
+footer{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.footer-p1{
+  font-size: 12px;
+
+}
+
+.adress{
+  color: rgb(17, 121, 121);
+}
+
+input{
+  margin:10px 0px;
+  height: 40px;
+  border: none;
+  border-bottom-style:solid ;
+  border-bottom-color: rgb(167, 166, 166);
+  border-width: 1px;
+}
+
+
+button{
+    font-size: 12px;
+    margin-top: 10px;
+    width: 150px;
+    border: none;
+    padding: 10px;
+    
+}
+
+
+.power-container{
+    background-color: rgb(243, 243, 243);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    
+}
+
+a{
+    color: black;
+    font-size: 12px;
+}
