@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import { useState } from "react";
 import DigitButton from "./DigitButton";
+import OperationButton from "./OperationButton";
+
 
 
  export const ACTIONS={
@@ -33,9 +35,63 @@ import DigitButton from "./DigitButton";
    case ACTIONS.CLEAR:
      return {
       ...state,
-      currentOperand:''
+      currentOperand:'',
+      previousOperand:'',
+      operation:''
+     }
+
+   case ACTIONS.CHOOSE_OPERATION:
+    if(state.currentOperand ==null && state.previousOperand == null)return state;
+    
+    if(state.previousOperand==null)
+    return{
+      ...state,
+      operation:payload.operation,
+      previousOperand:state.currentOperand,
+      currentOperand:null
     }
 
+    if(state.operation==="%")
+    return{
+      ...state,
+
+      previousOperand:state.previousOperand/100,
+      operation:payload.operation,
+      currentOperand:null
+
+    }
+
+    if (state.currentOperand==null)
+    return{
+      ...state,
+      operation:payload.operation,
+
+
+    }
+
+    return{
+      ...state,
+
+      previousOperand:evaluate(state),
+      operation:payload.operation,
+      currentOperand:null
+
+    }
+
+    case ACTIONS.EQUAL:
+        if(state.operation==null
+          || state.currentOperand==null||
+           state.previousOperand==null){
+              return state
+        }
+
+      return{
+        ...state,
+         previousOperand:null,
+         currentOperand: evaluate(state),
+         operation:null
+      }
+   
 
      
 
@@ -45,11 +101,49 @@ import DigitButton from "./DigitButton";
  }
 
 
-export default function main(){
-   
-  const [state, dispatch]=useReducer(reducer,{currentOperand:'', previousOperand:'', operation:''})
+ function evaluate({currentOperand, previousOperand, operation}){
+     
+  const prev= parseFloat(previousOperand)
+  const current= parseFloat(currentOperand)
+  if(isNaN(prev)|| isNaN(current)) return ""
 
-  
+  let  result= ""
+
+  switch(operation){
+
+    case '+':
+      result= prev + current
+      break
+
+    case '-':
+        result= prev - current
+        break
+
+   case '*':
+          result= prev * current
+          break
+
+
+  case '/':
+            result= prev / current
+            break
+
+
+
+
+
+  }
+
+  return result.toString()
+
+ }
+
+
+function main(){
+   
+  const [state, dispatch]=useReducer(reducer,{currentOperand:null, previousOperand: null, operation: null})
+
+ 
 
   return(
    <main>
@@ -57,6 +151,7 @@ export default function main(){
       <div> 
          <div className="cview">
           <p>{state.previousOperand}</p>
+          <p>{state.operation}</p>
           <p>{state.currentOperand}</p>
           </div>
          
@@ -66,7 +161,8 @@ export default function main(){
 
       <div className="buttons">
        <div className="button-container">
-         <button className="button-name" onClick={()=> dispatch({type:ACTIONS.CLEAR})}> Ac</button>
+         <button className="button-name" 
+         onClick={()=>dispatch({type:ACTIONS.CLEAR})}> Ac</button>
          <p className="button-tooltip"> Ac</p>
        </div>
 
@@ -76,12 +172,12 @@ export default function main(){
        </div>
 
        <div className="button-container">
-         <button className="button-name"> %</button>
+         <OperationButton operation='%' dispatch={dispatch}/>
          <p className="button-tooltip"> %</p>
        </div>
 
        <div className="button-container">
-         <button className="button-name"> /</button>
+       <OperationButton operation='/' dispatch={dispatch}/>
          <p className="button-tooltip"> /</p>
        </div>
 
@@ -103,7 +199,7 @@ export default function main(){
        </div>
 
        <div className="button-container">
-         <button className="button-name"> *</button>
+       <OperationButton operation='*' dispatch={dispatch}/>
          <p className="button-tooltip"> *</p>
        </div>
 
@@ -124,7 +220,7 @@ export default function main(){
        </div>
 
        <div className="button-container">
-         <button className="button-name"> -</button>
+       <OperationButton operation='-' dispatch={dispatch}/>
          <p className="button-tooltip"> -</p>
        </div>
 
@@ -144,7 +240,7 @@ export default function main(){
        </div>
 
        <div className="button-container">
-         <button className="button-name"> +</button>
+       <OperationButton operation='+' dispatch={dispatch}/>
          <p className="button-tooltip"> +</p>
        </div>
 
@@ -161,7 +257,8 @@ export default function main(){
        </div>
 
        <div className="button-container">
-         <button className="button-name">=</button>
+         <button className="button-name"
+           onClick={()=>dispatch({type:ACTIONS.EQUAL})}>=</button>
          <p className="button-tooltip"> =</p>
        </div>
        </div>
@@ -179,3 +276,6 @@ export default function main(){
 
   )
 }
+
+
+export default main;
