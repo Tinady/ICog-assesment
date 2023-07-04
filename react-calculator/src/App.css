@@ -80,7 +80,7 @@ main{
 .buttons{
     
     display: grid;
-    margin-top: 11px;
+    margin-top: 26px;
     grid-template-columns: repeat(4, 70px);
 }
 
