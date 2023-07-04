@@ -139,14 +139,14 @@ import OperationButton from "./OperationButton";
  }
 
 
-function main(){
+function main(props){
    
   const [state, dispatch]=useReducer(reducer,{currentOperand:null, previousOperand: null, operation: null})
 
  
 
   return(
-   <main>
+   <main className={props.darkmode?'main-dark':''}>
      <div className="calc-container">
       <div> 
          <div className="cview">
