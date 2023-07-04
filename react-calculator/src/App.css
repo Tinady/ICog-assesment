@@ -1,0 +1,93 @@
+ nav{
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-width: 1px;
+ }
+
+
+
+
+ .nav-container{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ .icon-container{
+    display: flex;
+    margin-right: auto;
+ }
+
+
+.calc-icon{
+   height: 50px;
+
+
+}
+
+
+
+
+.toggle-slider{
+    background-color: rgb(14, 9, 75);
+    width: 40px;
+    height: 20px;
+    border-radius:20px;
+    position: relative;
+}
+
+nav.dark .toggle-slider{
+   background-color:rgb(150, 233, 233);
+}
+
+nav.dark .toggle-circle{
+  background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% );
+  transform: translateX(100%);
+}
+
+.toggle-circle{
+  background-color: rgb(150, 233, 233);
+  height: 19.5px;
+  width: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.calc-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 70px 330px;
+ 
+ }
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.cview
+{
+    width: 260px;
+    height: 80px;
+    background-color: beige;
+}
+
+
+.buttons{
+    background-color: aqua;
+}
+
+
+
+.button-name{
+    position: absolute;
+}
+
+.button-tooltip{
+    position: relative;
+    visibility: hidden;
+}
