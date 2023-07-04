@@ -5,13 +5,17 @@ import './App.css'
 
 function App() {
 
-  const()
+  const [darkmode, setDarkmode]= useState(true)
+
+  function handleclick(){
+    setDarkmode(prevstate=>!prevstate)
+  }
   
 
   return (
     <div className="App">
-      <Header/>
-       <Main/>
+      <Header darkmode={darkmode} handleClick={handleclick} />
+       <Main darkmode={darkmode}/>
     </div>
   )
 }
