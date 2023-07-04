@@ -1,11 +1,16 @@
 import React from "react";
+import { useState } from "react";
 
 export default function main(){
+  const [currentValue,  setCurrentValue]=useState('0')
+
+
+
   return(
    <main>
      <div className="calc-container">
       <div> 
-         <div className="cview">9 </div>
+         <div className="cview">{currentValue}</div>
          <p className="button-tooltip"> Cview</p>
 
       </div>
