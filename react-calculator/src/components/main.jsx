@@ -94,6 +94,8 @@ export default function main(){
          <p className="button-tooltip"> +</p>
        </div>
 
+       <div className="last-row">
+
        <div className="button-container">
          <button className="button-name"> 0</button>
          <p className="button-tooltip"> 0</p>
@@ -107,6 +109,7 @@ export default function main(){
        <div className="button-container">
          <button className="button-name">=</button>
          <p className="button-tooltip"> =</p>
+       </div>
        </div>
 
 
