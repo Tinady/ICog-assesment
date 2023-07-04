@@ -5,7 +5,7 @@ import icon from  '../assets/icon.svg'
 
  export default  function header(props){
     return(
-        <nav className={props.darkMode?'dark':''}>
+        <nav className={props.darkmode?'nav-dark':''}>
             
                 <div className="icon-container">
                <img src={icon} className="calc-icon"/>
