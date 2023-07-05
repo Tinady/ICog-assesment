@@ -1,31 +1,58 @@
- nav{
-    display: flex;
-    align-items:center;
-    justify-content: space-evenly;
-     box-shadow: 0.5px 0.5px rgba(1,1,1, 0.5);
+ body{
+    margin: 0;
+    padding: 0;
  }
+ 
+ nav{
+   
+    height: 60px;
+    box-shadow: 0.5px 0.5px rgba(1,1,1, 0.5);
+    height: 3.5rem;
+     
+  
+     
+}
 
-body .nav-dark{
+.nav-dark{
     background-color: rgb(36, 33, 33);
     color: white;
-    box-shadow: 1px 1px rgba(255, 255, 255, 1);
+    border-bottom-style:solid ;
+    border-bottom-width:0.2px ;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
  }
 
 
-.nav-container{
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
- }
+ .header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    
+}
+
+.header-container h3{
+    font-size: 20px;
+    align-self: center;
+    margin-top: 19px;
+    font-weight: 900;
+    
+
+}
+
+ 
+
+
+
 
  .icon-container{
     display: flex;
-    margin-right: auto;
+    
  }
 
 
 .calc-icon{
-   height: 50px;
+   height: 40px;
+   margin-top: 8px;
 
 
 }
@@ -34,38 +61,33 @@ body .nav-dark{
 
 
 .toggle-slider{
-    background-color: rgb(14, 9, 75);
-    width: 40px;
-    height: 20px;
+    background-color: rgb(171, 171, 173);
+    width: 50px;
+    height: 25px;
     border-radius:20px;
     position: relative;
 }
 
 .nav-dark .toggle-slider{
-   background-color:rgb(150, 233, 233);
+   background-color:rgb(55, 65, 174);
 }
 
 .nav-dark .toggle-circle{
-  background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% );
+    background-color: rgb(249, 249, 249);
   transform: translateX(100%);
 }
 
 .toggle-circle{
-  background-color: rgb(150, 233, 233);
-  height: 19.5px;
-  width: 20px;
+  background-color: rgb(249, 249, 249);
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
   position: absolute;
   left: 0;
   top: 0;
 }
 
-.calc-container{
-    margin-top: 20px;
-    display: grid;
-    grid-template-rows: 70px 330px;
- 
- }
+
 
 main{
     display: flex;
@@ -74,37 +96,69 @@ main{
 
 .main-dark {
     background-color: rgb(36, 33, 33);
+    padding-bottom: 182px;
     
     
 }
 
+.calc-container{
+    margin-top: 15px;
+    display: grid;
+    grid-template-rows: 70px 330px;
+ 
+ }
+
+ .main-dark .cview{
+    background-color: rgb(29, 28, 28);
+
+
+ }
+
+ .main-dark .button-name{
+    background-color: rgb(21, 21, 21);
+}
+
 .cview
 {
-    width: 280px;
+    width: 270px;
     height: 80px;
-    background-color: rgb(190, 190, 190);
+    background-color: rgb(221, 218, 218);
 }
+
 
 
 .buttons{
     
     display: grid;
     margin-top: 26px;
-    grid-template-columns: repeat(4, 70px);
+    grid-template-columns: repeat(4, 67.5px);
+    height: 320px;
 }
 
 .last-row{
     display: grid;
-    grid-template-columns: 140px 70px 70px;
+    grid-template-columns: 135px 67.5px 67.5px;
 }
+
+
+
 
 .button-container{
     margin: 1px;
+    
+    
    
    
 }
 
+.main-dark .button-name{
+    color: rgb(188, 186, 183);
+
+}
+
 .button-name{
+    font-size: 20px;
+    font-weight: absolute;
     position: relative;
     width: 100%;
     height: 100%;
@@ -112,8 +166,29 @@ main{
    
 }
 
+.cview:hover .button-tooltip{
+    visibility: visible;
+}
+
+.button-container:hover .button-tooltip{
+    visibility: visible;
+}
+
 .button-tooltip{
-    position: absolute;
+    font-size: 10px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(223, 223, 223);
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    z-index: 100;
+    left: 10px;
+    bottom: 10px;
     visibility: hidden;
-    bottom: 0px;
+    
 }
