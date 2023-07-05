@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header darkmode={darkmode} handleClick={handleclick} />
-       <Main darkmode={darkmode}/>
+    <Main darkmode={darkmode}/>
     </div>
   )
 }
