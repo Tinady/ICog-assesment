@@ -11,7 +11,8 @@ import OperationButton from "./OperationButton";
   ADD_DIGIT:'add-digit',
   CHOOSE_OPERATION:'choose-operation',
   CHOOSE_SIGN: 'choose_sign',
-  EQUAL: 'equal'
+  EQUAL: 'equal',
+  PERCENTAGE:'%'
 
 
 
@@ -24,47 +25,46 @@ import OperationButton from "./OperationButton";
 
   switch(type){
     case ACTIONS.ADD_DIGIT:
-      
-      if (payload.digit==='0'&& state.currentOperand ==='0') return state
-      if (payload.digit==='.'&& state.currentOperand.includes('.')) return state
+
+      if (payload.digit==='0'&& state.currentOperand ==='0') return {...state, result:state.currentOperand}
+      if (payload.digit==='.'&& state.currentOperand.includes('.')) return {...state, result:state.currentOperand}
       return{
       ...state,
-      currentOperand: `${state.currentOperand|| ''}${payload.digit}`
+      currentOperand: `${state.currentOperand|| ''}${payload.digit}`,
+      result:`${state.currentOperand|| ''}${payload.digit}`
+     
    }
+   
+
+     
 
    case ACTIONS.CLEAR:
      return {
       ...state,
       currentOperand:'',
       previousOperand:'',
-      operation:''
+      operation:'',
+      result:'0'
      }
 
    case ACTIONS.CHOOSE_OPERATION:
-    if(state.currentOperand ==null && state.previousOperand == null)return state;
+    
     
     if(state.previousOperand==null)
     return{
       ...state,
       operation:payload.operation,
       previousOperand:state.currentOperand,
-      currentOperand:null
+      currentOperand:null,
+      result:state.currentOperand
     }
 
-    if(state.operation==="%")
-    return{
-      ...state,
-
-      previousOperand:state.previousOperand/100,
-      operation:payload.operation,
-      currentOperand:null
-
-    }
+    
 
     if (state.currentOperand==null)
     return{
       ...state,
-      operation:payload.operation,
+      operation:payload.operation
 
 
     }
@@ -74,11 +74,15 @@ import OperationButton from "./OperationButton";
 
       previousOperand:evaluate(state),
       operation:payload.operation,
-      currentOperand:null
+      currentOperand:null,
+      result:evaluate(state),
 
     }
 
     case ACTIONS.EQUAL:
+   
+
+
         if(state.operation==null
           || state.currentOperand==null||
            state.previousOperand==null){
@@ -89,15 +93,41 @@ import OperationButton from "./OperationButton";
         ...state,
          previousOperand:null,
          currentOperand: evaluate(state),
-         operation:null
+         operation:null,
+         result:evaluate(state),
       }
-   
 
-     
+      case ACTIONS.CHOOSE_SIGN:
 
+      
+       return{
+        ...state,
+         previousOperand:null,
+         currentOperand: changeSign(state),
+         operation:null,
+         result:changeSign(state)
+       }
 
-  }
+    case ACTIONS.PERCENTAGE:
+      return{
+        ...state,
+         previousOperand:null,
+         currentOperand: Percentage(state),
+         operation:null,
+         result:Percentage(state)
+       }
 
+}
+
+ }
+
+ function Percentage({result}){
+    return result/100
+ }
+
+ function changeSign({result})
+ {
+    return result*-1
  }
 
 
@@ -107,26 +137,31 @@ import OperationButton from "./OperationButton";
   const current= parseFloat(currentOperand)
   if(isNaN(prev)|| isNaN(current)) return ""
 
-  let  result= ""
+  let  comp=""
 
   switch(operation){
 
     case '+':
-      result= prev + current
+      comp= prev + current
       break
 
     case '-':
-        result= prev - current
+        comp= prev - current
         break
 
    case '*':
-          result= prev * current
+          comp= prev * current
           break
 
 
   case '/':
-            result= prev / current
+            comp= prev / current
             break
+
+  
+
+       
+      
 
 
 
@@ -134,14 +169,14 @@ import OperationButton from "./OperationButton";
 
   }
 
-  return result.toString()
+      return comp.toString()
 
  }
 
 
 function main(props){
    
-  const [state, dispatch]=useReducer(reducer,{currentOperand:null, previousOperand: null, operation: null})
+  const [state, dispatch]=useReducer(reducer,{currentOperand:null, previousOperand: null, operation: null, result:0})
 
  
 
@@ -150,9 +185,7 @@ function main(props){
      <div className="calc-container">
       <div> 
          <div className="cview">
-          <p>{state.previousOperand}</p>
-          <p>{state.operation}</p>
-          <p>{state.currentOperand}</p>
+           <p className="result">{state.result}</p>
           </div>
          
          <p className="button-tooltip"> Cview</p>
@@ -167,12 +200,14 @@ function main(props){
        </div>
 
        <div className="button-container">
-         <button className="button-name"> +/-</button>
+         <button className="button-name"
+         onClick={()=>dispatch({type:ACTIONS.CHOOSE_SIGN})}> +/-</button>
          <p className="button-tooltip"> +/-</p>
        </div>
 
        <div className="button-container">
-         <OperationButton operation='%' dispatch={dispatch}/>
+         <button className="button-name"
+         onClick={()=>dispatch({type:ACTIONS.PERCENTAGE})}>% </button>
          <p className="button-tooltip"> %</p>
        </div>
 
