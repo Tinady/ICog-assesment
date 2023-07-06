@@ -41,9 +41,9 @@ import OperationButton from "./OperationButton";
    case ACTIONS.CLEAR:
      return {
       ...state,
-      currentOperand:'',
-      previousOperand:'',
-      operation:'',
+      currentOperand:null,
+      previousOperand:null,
+      operation:null,
       result:'0'
      }
 
